@@ -1,0 +1,1 @@
+/data/auyar/ATAC-Seq_Data/Palucka/mtDepletion/deepData/Depleted/NS113/NS113_PBMC_6/
