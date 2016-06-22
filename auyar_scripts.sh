@@ -71,7 +71,7 @@ currentDIR=$(pwd)
 echo \#!/bin/bash >> $outputDIR/ATAC-seq.qsub
 echo \#PBS -l nodes=1:ppn=16 >> $outputDIR/ATAC-seq.qsub
 echo \#PBS -l walltime=16:00:00 >> $outputDIR/ATAC-seq.qsub
-echo \#PBS -N trimmomatic  >> $outputDIR/ATAC-seq.qsub
+echo \#PBS -N ATAC-seq  >> $outputDIR/ATAC-seq.qsub
 echo module load python >> $outputDIR/ATAC-seq.qsub
 echo module load R >> $outputDIR/ATAC-seq.qsub
 echo module load perl/5.10.1 >> $outputDIR/ATAC-seq.qsub
