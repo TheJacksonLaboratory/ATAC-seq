@@ -1,5 +1,7 @@
 #!/bin/bash
 
+scriptDIR=$(pwd)
+
 dataDIR=$1
 
 outputDIR=/home/ssander/Desktop/ATAC-seq/working
@@ -33,10 +35,17 @@ echo \#PBS -l nodes=1:ppn=2 >> $outputDIR/trimmomatic.qsub
 echo \#PBS -l walltime=24:00:00 >> $outputDIR/trimmomatic.qsub
 echo \#PBS -N fastqc  >> $outputDIR/trimmomatic.qsub
 echo \#PBS -t 1-$FILENUMBER >> $outputDIR/trimmomatic.qsub
-echo FILE=\$\(head -n \$PBS_ARRAYID $outputDIR/fastqc_filelist.txt \| tail -1\) >> $outputDIR/trimmomatic.qsub
+echo FILE=\$\(head -n \$PBS_ARRAYID $outputDIR/trimmomatic_R1_filelist.txt \| tail -1\) >> $outputDIR/trimmomatic.qsub
 echo FILE2=\$\(basename "\${FILE}" \| sed \'s/R1_001\.fastq.gz/R2_001\.fastq.gz/g\'\) >> $outputDIR/trimmomatic.qsub
 # need to finish adding auyuar/trimmomatic.sh here #
 
+echo FILE1paired=\$\(basename \"\${FILE}\" \| sed \'s/R1_001\.fastq.gz/R1_001\.fastq_filtered.gz/g\'\) >> $outputDIR/trimmomatic.qsub
+echo FILE2paired=\$\(basename \"\${FILE2}\" \| sed \'s/R2_001\.fastq.gz/R2_001\.fastq_filtered.gz/g\'\) >> $outputDIR/trimmomatic.qsub
+echo FILE1unpaired=\$\(basename \"\${FILE}\" \| sed \'s/R1_001\.fastq.gz/R1_001\.trimU\.fastq.gz/g\'\) >> $outputDIR/trimmomatic.qsub
+echo FILE2unpaired=\$\(basename \"\${FILE2}\" \| sed \'s/R2_001\.fastq.gz/R2_001\.trimU\.fastq.gz/g\'\) >> $outputDIR/trimmomatic.qsub
+echo java -jar /opt/compsci/Trimmomatic/0.33/trimmomatic-0.33.jar PE -threads 2 \$FILE $dataDIR\$FILE2 $outputDIR/trimmomatic/\$FILE1paired $outputDIR/trimmomatic/\$FILE1unpaired $outputDIR/trimmomatic/\$FILE2paired $outputDIR/trimmomatic/\$FILE2unpaired TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 >> $outputDIR/trimmomatic.qsub
+
+echo $scriptDIR
 
 #qsub $outputDIR/fastqc.qsub
 #qsub $outputDIR/trimmomatic.sh
