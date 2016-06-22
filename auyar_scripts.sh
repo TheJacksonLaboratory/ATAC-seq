@@ -80,7 +80,7 @@ echo module load bedtools >> $outputDIR/ATAC-seq.qsub
 echo gunzip $outputDIR/trimmomatic/*.gz >> $outputDIR/ATAC-seq.qsub
 echo bash $scriptDIR/auyar/bwa_trimmomatic.sh ../ >> $outputDIR/ATAC-seq.qsub
 echo bash $scriptDIR/auyar/macs2_bwa_trimmomatic.sh ../ >> $outputDIR/ATAC-seq.qsub
-ecoh bash $scriptDIR/auyar/homer_bwa_trimmomatic.sh ../ >> $outputDIR/ATAC-seq.qsub
+echo bash $scriptDIR/auyar/homer_bwa_trimmomatic.sh ../ >> $outputDIR/ATAC-seq.qsub
 echo bash $scriptDIR/auyar/nReads.sh ../ >> $outputDIR/ATAC-seq.qsub
 echo gzip $outputDIR/trimmomatic/*.fastq >> $outputDIR/ATAC-seq.qsub
 ######
