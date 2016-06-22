@@ -1,10 +1,9 @@
 #!/bin/bash
 
+dataDIR=$1 #ARGV, contains folder with FASTQ files, right now needs trailing /
+
 scriptDIR=$(pwd)
-
-dataDIR=$1
-
-outputDIR=/home/ssander/Desktop/ATAC-seq/working
+outputDIR=$scriptDIR/working
 mkdir $outputDIR
 
 ### FastQC Pipeline ###
