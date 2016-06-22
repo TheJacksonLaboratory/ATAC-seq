@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #PBS -l nodes=1:ppn=12,walltime=16:00:00
-#PBS -m e
-#PBS -M asli.uyar@jax.org  
+#PBS -q batch
+  
 
 cd $PBS_O_WORKDIR
 
