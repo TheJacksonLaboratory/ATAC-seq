@@ -86,6 +86,7 @@ echo gzip $outputDIR/trimmomatic/*.fastq >> $outputDIR/ATAC-seq.qsub
 ######
 
 # something buggy is going on here...do job dependencies bug out when given job arrays?
-qsub $outputDIR/fastqc.qsub
-JOBHOLD="$(qsub $outputDIR/trimmomatic.qsub)"
-qsub -Wdepend=afterok:$JOBHOLD $outputDIR/ATAC-seq.qsub
+# commenting the automatic queue submission section out for debugging at this point
+# qsub $outputDIR/fastqc.qsub
+# JOBHOLD="$(qsub $outputDIR/trimmomatic.qsub)"
+# qsub -Wdepend=afterok:$JOBHOLD $outputDIR/ATAC-seq.qsub
