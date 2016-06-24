@@ -78,7 +78,18 @@ echo module load perl/5.10.1 >> $outputDIR/ATAC-seq.qsub
 echo module load samtools/0.1.19 >> $outputDIR/ATAC-seq.qsub
 echo module load bedtools >> $outputDIR/ATAC-seq.qsub
 echo gunzip $outputDIR/trimmomatic/*.gz >> $outputDIR/ATAC-seq.qsub
-echo bash $scriptDIR/auyar/bwa_trimmomatic.sh ../ >> $outputDIR/ATAC-seq.qsub
+#echo bash $scriptDIR/auyar/bwa_trimmomatic.sh ../ >> $outputDIR/ATAC-seq.qsub
+
+ls $outputDIR/trimmomatic
+for f in $(find $outputDIR/trimmomatic/ -name *R1_001.trim.fastq.gz)
+do
+	fileName2=$(basename "${f}" | sed 's/R1_001\.trim\.fastq/R2_001\.trim\.fastq/g')
+	fileNameSAM=$(basename "${f}" | sed 's/R1_001\.trim\.fastq/hg19\.sam/g')
+	fileNameMetrics=$(basename "${f}" | sed 's/R1_001\.trim\.fastq/metrics\.txt/g')
+	echo /opt/compsci/bwa/0.7.12/bin/bwa mem -M /data/shared/genomes/Homo_sapiens/UCSC/hg19/Sequence/BWAIndex/genome.fa $f $outputDIR/trimmomatic/$fileName2 > $outputDIR/trimmomatic/bwa/$fileNameSAM
+done
+
+
 echo bash $scriptDIR/auyar/macs2_bwa_trimmomatic.sh ../ >> $outputDIR/ATAC-seq.qsub
 echo bash $scriptDIR/auyar/homer_bwa_trimmomatic.sh ../ >> $outputDIR/ATAC-seq.qsub
 echo bash $scriptDIR/auyar/nReads.sh ../ >> $outputDIR/ATAC-seq.qsub
