@@ -18,8 +18,7 @@ Christina new feature
 
 Adding readme back
 
-<<<<<<< HEAD
 Practicing with Saman
-=======
+
 Making another change  
->>>>>>> adding
+
