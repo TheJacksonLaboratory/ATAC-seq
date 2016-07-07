@@ -59,17 +59,12 @@ echo python $scriptDIR/auyar/pyadapter_trim.py -a $outputDIR/trimmomatic/\$FILE1
 # * auyar/homer_bwa_trimmomatic.sh
 # * auyar/nReads.sh
 
-cd $outputDIR/trimmomatic
-mkdir bwa
-cd bwa
-mkdir macs2
-mkdir homer
-cd ../..
-currentDIR=$(pwd)
-#echo "Current DIR" $currentDIR
-#echo "Output DIR" $outputDIR
+mkdir $outputDIR/trimmomatic/bwa
+mkdir $outputDIR/trimmomatic/bwa/macs2
+mkdir $outputDIR/trimmomatic/bwa/homer
 
-cp $scriptDIR/auyar/run_ATAC_pipeline.sh $currentDIR/
+
+#cp $scriptDIR/auyar/run_ATAC_pipeline.sh $currentDIR/
 
 #echo \#!/bin/bash >> $outputDIR/ATAC-seq.qsub
 #echo \#PBS -l nodes=1:ppn=16 >> $outputDIR/ATAC-seq.qsub
@@ -99,9 +94,29 @@ cp $scriptDIR/auyar/run_ATAC_pipeline.sh $currentDIR/
 #echo gzip $outputDIR/trimmomatic/*.fastq >> $outputDIR/ATAC-seq.qsub
 ######
 
-# something buggy is going on here...do job dependencies bug out when given job arrays?
-# commenting the automatic queue submission section out for debugging at this point
 
 qsub $outputDIR/fastqc.qsub
 JOBHOLD="$(qsub $outputDIR/trimmomatic.qsub)"
-qsub -Wdepend=afterokarray:$JOBHOLD $outputDIR/run_ATAC_pipeline.sh
+#qsub -Wdepend=afterokarray:$JOBHOLD $outputDIR/run_ATAC_pipeline.sh
+#find $outputDIR/trimmomatic -name *R1_001.trim.fastq.gz > $outputDIR/bwa_filelist.txt
+
+#FILENUMBER=$(wc -l $outputDIR/bwa_R1_filelist.txt | cut -d' ' -f1)
+
+#mkdir $outputDIR/trimmomatic/bwa
+
+#echo \#!/bin/bash >> $outputDIR/bwa.qsub
+#echo \#PBS -l nodes=1:ppn=16 >> $outputDIR/bwa.qsub
+#echo \#PBS -l walltime=48:00:00 >> $outputDIR/bwa.qsub
+#echo \#PBS -N ATAC-seq-bwa >> $outputDIR/bwa.qsub
+#echo \#PBS -t 1-$FILENUMBER >> $outputDIR/bwa.qsub
+#echo module load python >> $outputDIR/bwa.qsub
+#echo module load R >> $outputDIR/bwa.qsub
+#echo module load perl/5.10.1 >> $outputDIR/bwa.qsub
+#echo module load samtools/0.1.19 >> $outputDIR/bwa.qsub
+#echo module load bedtools >> $outputDIR/bwa.qsub
+#echo FILE=\$\(head -n \$PBS_ARRAYID $outputDIR/bwa_filelist.txt \| tail -1\) >> $outputDIR/bwa.qsub
+#echo FILE2=\$\(basename "\${FILE}"\| sed \'s/R1_001\.trim\.fastq\.gz/R2_001\.trim\.fastq\.gz/g\'\) >> $outputDIR/bwa.qsub
+#echo FILESAM=$FILE_hg19.sam >> $outputDIR/bwa.qsub
+#echo /opt/compsci/bwa/0.7.12/bin/bwa mem -M /data/shared/genomes/Homo_sapiens/UCSC/hg19/Sequence/BWAIndex/genome.fa $outputDIR/trimmomatic/\$FILE $outputDIR/trimmomatic/\$FIILE2 > $outputPath/trimmomatic/bwa/\$FILESAM >> $outputDIR/bwa.qsub
+
+#qsub -Wdepend=afterokarray:$JOBHOLD $outputDIR/run_ATAC_pipeline.sh
