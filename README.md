@@ -4,22 +4,8 @@
 
 Working to make the ATAC-seq pipeline used by the Duygu Ucar Laboratory more generalized for use by other scientific researchers.
 
-*(20-June-2016):* Transferred ownership of repository from @williamssanders to @TheJacksonLaboratory.
+*(07-Jul-2016):* Cleaned up README.md after team members successful contributions.
 
-*(16-June-2016):* Added initial pipelines provided by Asli Uyar (auyar) Eladio Marquez (emarquez).
+*(20-Jun-2016):* Transferred ownership of repository from @williamssanders to @TheJacksonLaboratory.
 
-Mary's comment
-
-Christina's comment
-
-Mary's second comment
-
-Christina new feature
-
-Adding readme back
-
-Practicing with Saman
-
-Making another change  
-
-Saman adding in a comment
+*(16-Jun-2016):* Added initial pipelines provided by Asli Uyar (auyar) Eladio Marquez (emarquez).
