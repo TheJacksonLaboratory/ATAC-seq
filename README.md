@@ -10,3 +10,4 @@ Working to make the ATAC-seq pipeline used by the Duygu Ucar Laboratory more gen
 
 *(16-Jun-2016):* Added initial pipelines provided by Asli Uyar (auyar) Eladio Marquez (emarquez).
 
+Newline.
