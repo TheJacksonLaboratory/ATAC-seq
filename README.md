@@ -9,3 +9,4 @@ Working to make the ATAC-seq pipeline used by the Duygu Ucar Laboratory more gen
 *(20-Jun-2016):* Transferred ownership of repository from @williamssanders to @TheJacksonLaboratory.
 
 *(16-Jun-2016):* Added initial pipelines provided by Asli Uyar (auyar) Eladio Marquez (emarquez).
+
