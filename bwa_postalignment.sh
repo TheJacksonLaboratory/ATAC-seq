@@ -16,7 +16,7 @@ rm $dataDIR/postBWA.qsub
 
 echo \#!/bin/bash >> $dataDIR/postBWA.qsub
 echo \#PBS -l nodes=1:ppn=16 >> $dataDIR/postBWA.qsub
-echo \#PBS -l walltime=48:00:00 >> $dataDIR/postBWA.qsub
+echo \#PBS -l walltime=12:00:00 >> $dataDIR/postBWA.qsub
 echo \#PBS -N bwa  >> $dataDIR/postBWA.qsub
 echo \#PBS -t 1-$FILENUMBER >> $dataDIR/postBWA.qsub
 echo module load python >> $dataDIR/postBWA.qsub
