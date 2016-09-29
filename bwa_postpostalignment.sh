@@ -9,10 +9,12 @@ outputDIR=$dataDIR/trimmomatic/bwa
 # now bamtobed
 #
 rm $dataDIR/shiftedbamfilelist.txt
-ls -1 $inputDIR/*shifted.bam > $dataDIR/shiftedbamfilelist.txt
+rm $dataDIR/postPost.qsub
+
+ls -1 $inputDIR/*shifted_sorted.bam > $dataDIR/shiftedbamfilelist.txt
 FILENUMBER=$(wc -l $dataDIR/shiftedbamfilelist.txt | cut -d' ' -f1)
 
-echo \#!/bin/bash >> $dataDIR/postPostBWA.qsub
+echo \#!/bin/bash > $dataDIR/postPostBWA.qsub
 echo \#PBS -l nodes=1:ppn=16 >> $dataDIR/postPostBWA.qsub
 echo \#PBS -l walltime=12:00:00 >> $dataDIR/postPostBWA.qsub
 echo \#PBS -N bwa  >> $dataDIR/postPostBWA.qsub
@@ -28,5 +30,5 @@ echo FILENAME1=\$\(basename \"\${FILE}\" \| sed \'s/\.bam/_sorted/g\'\)  >> $dat
 echo FILENAME2=\$\(basename \"\${FILE}\" \| sed \'s/\.bam/_sorted.bed/g\'\) >> $dataDIR/postPostBWA.qsub
 echo samtools sort \$FILE $outputDIR/\$FILENAME1 >> $dataDIR/postPostBWA.qsub
 echo samtools index $outputDIR/\$FILENAME >> $dataDIR/postPostBWA.qsub
-echo bedtools bamtobed -i $outputDIR/\$FILENAME > $outputDIR/\$FILENAME2 >> $dataDIR/postPostBWA.qsub
+echo bedtools bamtobed -i $outputDIR/\$FILENAME \> $outputDIR/\$FILENAME2 >> $dataDIR/postPostBWA.qsub
 
