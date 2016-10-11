@@ -28,12 +28,12 @@
 
 scriptDIR=$(pwd)
 workingDIR=$scriptDIR/working
-
+trimmomaticDIR=$workingDIR/trimmomatic
 ## Bwa Alignment Pipeline ##
 mkdir $workingDIR/trimmomatic/bwa
 
 rm $workingDIR/filelist.txt
-ls -1 $workingDIR/*R1_001.trim.fastq.gz > $workingDIR/filelist.txt
+ls -1 $trimmomaticDIR/*R1_001.trim.fastq.gz > $workingDIR/filelist.txt
 FILENUMBER=$(wc -l $workingDIR/filelist.txt | cut -d' ' -f1)
 
 #echo $FILENUMBER
