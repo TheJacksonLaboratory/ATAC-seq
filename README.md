@@ -9,44 +9,82 @@ because of the dependencies that remain to the directory of scripts
 Assumptions
 
 # Workflow
-      
+
+     [ login to helix ]
+                 |
+                 |
+     [ mkdir /data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name> ]
+                 |
+                 |
+     [ cd /data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name> ]
+                 |
+                 |
      [ git clone the ATAC-seq repository ]
                  |
                  |
-     [ make_atac_seq_shifted_bam_1_fastqc.sh <ATAC-Seq Banchereau-Lab/GT-delivery/ATAC-seq directory (with trailing /> ]
+     [ ./make_atac_seq_shifted_bam_1_fastqc.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working> ]
                  |
                  |
-     [ make_atac_seq_shifted_bam_2_trimmomatic.sh <ATAC-Seq Banchereau-Lab/GT-delivery/ATAC-seq directory (with trailing /> ]
+     [ ./make_atac_seq_shifted_bam_2_trimmomatic.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working> ]
                  |
                  |
-     [ make_atac_seq_shifted_bam_3_bwa.sh <ATAC-Seq Banchereau-Lab/GT-delivery/ATAC-seq directory (with trailing /> ]
+     [ ./make_atac_seq_shifted_bam_3_bwa.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working> ]
                  |
                  |
-     [ make_atac_seq_shifted_bam_4_shift_sam.sh <ATAC-Seq Banchereau-Lab/GT-delivery/ATAC-seq directory (with trailing /> ]
+     [ ./make_atac_seq_shifted_bam_4_shift_sam.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working> ]
                  |
                  |
-     [ make_atac_seq_shifted_bam_5_bamtobed.sh <ATAC-Seq Banchereau-Lab/GT-delivery/ATAC-seq directory (with trailing /> ]
+     [ ./make_atac_seq_shifted_bam_5_bamtobed.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working> ]
                  |
                  |
-     [ make_atac_seq_shifted_bam_6_cleanup.sh <ATAC-Seq Banchereau-Lab/GT-delivery/ATAC-seq directory (with trailing /> ]
+     [ ./make_atac_seq_shifted_bam_6_cleanup.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working> ]
+                 |
+                 |
+     [ done! - send an email to the analyst who is to take it from here ]
 
+
+
+#Begin - Make a directory in Banchereau-Lab ATAC-seq directory
+
+ Pick a name that is appropriate for the study for which this sequencing was done.  
+ Make a directory with that name  /data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working
+
+#Change directory to this newly named directory in the ATAC-seq directory
+ 
+ Make sure you are in this newly named directory before you clone this repository.
+
+ cd /data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/
+   
 #Get the scripts.
-git clone this repository
 
-  In the /data/Banchereau-Lab/GT-delivery/ATAC-seq directory, make a directory that contains a symbolic link to all the files
-  that need to be processed 
+  git clone this repository
 
-#Call the first script
+#Call the first script - run fastqc
 
   make_atac_seq_shifted_bam_1_fastqc.sh
-  Purpose:   
+
+  Purpose:  Once it is known that the files are ready from Genome Technologies (GT)
+            These files are copied to /data/Banchereau-Lab/GT-delivery/ATAC-seq maintaining
+            the project information encoded in the directory name
+    
+            Once copied, the user goes to the /data/Banchereau-Lab/ATAC-seq directory
+            makes an appropriately named subdirectory -- and begins the process
+            this may be facilitated by aligning all files in the project at once
+            once they are all delivered for example, and it may be over the entire course
+            of several months -- a single run may be performed and the job can be job arrayed
             
-#Call the second script
+            To facilitate this -- symbolic links are made to a representatively named
+            directory structure and these may then be referenced in this first call
+
+  What else happens -- a working directory is created
+            
+#Call the second script - trim files
   
   make_atac_seq_shifted_bam_2_trimmomatic.sh
-  Purpose:  fastqc has been run now we run trimmomatic to identified the trimmend and untrimmed fastq files
 
-  Call:     make_atac_seq_shifted_bam_1_run_fastqc.sh <ATAC-Seq Banchereau-Lab/GT-delivery/ATAC-seq directory (with trailing /> ]
+  Call:     make_atac_seq_shifted_bam_1_run_fastqc.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working>
+
+  Purpose:  fastqc has been run now we run trimmomatic to identified the trimmend and untrimmed fastq files
 
   Assumptions:  
 
@@ -54,12 +92,13 @@ git clone this repository
             2.  we are in the same directory as the scripts.
 
 
-#Call the third script
+#Call the third script - align to genome
 
   make_atac_seq_shifted_bam_3_bwa.sh 
-  Purpose:  bwa is the alignment of the trimmed fastq files to the genome
 
-  Call:     make_atac_seq_shifted_bam_1_run_fastqc.sh <ATAC-Seq Banchereau-Lab/GT-delivery/ATAC-seq directory (with trailing /> ]
+  Call:     make_atac_seq_shifted_bam_1_run_fastqc.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working>
+
+  Purpose:  bwa is the alignment of the trimmed fastq files to the genome
 
   Assumptions:  
 
@@ -67,12 +106,13 @@ git clone this repository
            2.  we are in the same directory as the scripts.
            3.  trimmomatic has been run
 
-#Call the fourth script
+#Call the fourth script - shift the sam file
 
   make_atac_seq_shifted_bam_4_shift_sam.sh
 
-  Purpose: This routine calls ATAC_BAM_shifter_gappedAlign.pl
+  Call:  make_atac_seq_shifted_bam_4_shift_sam.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working>
 
+  Purpose: This routine calls ATAC_BAM_shifter_gappedAlign.pl
           
           From Asli Uyar, PhD
              "The bam file needs to be adjusted because Tn5 has a 9bp binding site, and it binds in the middle.  
@@ -114,13 +154,13 @@ git clone this repository
             4.  bwa has been run
 
 
-#Call the fifth script
+#Call the fifth script - convert to shifted_sorted.bam
 
   make_atac_seq_shifted_bam_5_bamtobed.sh
 
-  Purpose: This routine sorts the shifted sam file and converts it to a bed file.
+  Call:     make_atac_seq_shifted_bam_5_bamtobed.sh  </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working>
 
-  Call:     make_atac_seq_shifted_bam_5_bamtobed.sh <ATAC-Seq Banchereau-Lab/GT-delivery/ATAC-seq directory (with trailing /> ]
+  Purpose: This routine sorts the shifted sam file and converts it to a bed file.
 
   Assumptions:  
 
@@ -135,12 +175,12 @@ git clone this repository
 
   make_atac_seq_shifted_bam_6_cleanup.sh
 
+  Call:  make_atac_seq_shifted_bam_6_cleanup.sh  </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working>
+
   Purpose: This routine removes all the trim and trimU fastq files (intermediate files that may be reproduced)
            It also removes all sam files, and the unsorted bam file, also all .o and .e files for readibility.
 
- Call:     make_atac_seq_shifted_bam_6_cleanup.sh <ATAC-Seq Banchereau-Lab/GT-delivery/ATAC-seq directory (with trailing /> ]
-
- Assumptions:  
+  Assumptions:  
 
           1.  code has been checked out - fastqc has been run - working directory created
           2.  we are in the same directory as the scripts.
