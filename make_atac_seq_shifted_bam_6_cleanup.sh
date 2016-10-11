@@ -34,10 +34,13 @@
 scriptDIR=$(pwd)
 workingDIR=$scriptDIR/working
 trimmomaticDIR=$workingDIR/trimmomatic
-bwaDIR=$trimmmoaticDIR/trimmomatic/bwa
+bwaDIR=$trimmomaticDIR/bwa
 
 rm $scriptDIR/*.o*
 rm $scriptDIR/*.e*
+
+rm $workingDIR/*.o*
+rm $workingDIR/*.e*
 
 rm $trimmomaticDIR/*.o*
 rm $trimmomaticDIR/*.e*
