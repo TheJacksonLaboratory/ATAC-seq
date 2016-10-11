@@ -29,11 +29,12 @@
 #           
 #
 #-------------------------------------------------------------------------------------
-dataDIR=$1 #ARGV, contains folder with FASTQ files, right now needs trailing /
+#dataDIR=$1 #ARGV, contains folder with FASTQ files, right now needs trailing /
 
 scriptDIR=$(pwd)
-trimmomaticDIR=$dataDIR/trimmomatic
-bwaDIR=$dataDIR/trimmomatic/bwa
+workingDIR=$scriptDIR/working
+trimmomaticDIR=$workingDIR/trimmomatic
+bwaDIR=$trimmmoaticDIR/trimmomatic/bwa
 
 rm $scriptDIR/*.o*
 rm $scriptDIR/*.e*

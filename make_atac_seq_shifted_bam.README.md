@@ -27,16 +27,16 @@
      [ ./make_atac_seq_shifted_bam_2_trimmomatic.sh <ATAC-Seq Banchereau-Lab/GT-delivery/ATAC-seq directory (with trailing /> ]
                  |
                  |
-     [ ./make_atac_seq_shifted_bam_3_bwa.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working> ]
+     [ ./make_atac_seq_shifted_bam_3_bwa.sh ]
                  |
                  |
-     [ ./make_atac_seq_shifted_bam_4_shift_sam.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working> ]
+     [ ./make_atac_seq_shifted_bam_4_shift_sam.sh ]
                  |
                  |
-     [ ./make_atac_seq_shifted_bam_5_bamtobed.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working> ]
+     [ ./make_atac_seq_shifted_bam_5_bamtobed.sh ]
                  |
                  |
-     [ ./make_atac_seq_shifted_bam_6_cleanup.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working> ]
+     [ ./make_atac_seq_shifted_bam_6_cleanup.sh ]
                  |
                  |
      [ done! - send an email to the analyst who is to take it from here ]
@@ -81,7 +81,7 @@
   
   make_atac_seq_shifted_bam_2_trimmomatic.sh
 
-  Call:     make_atac_seq_shifted_bam_1_run_fastqc.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working>
+  Call:     make_atac_seq_shifted_bam_1_run_fastqc.sh </data/Banchereau-Lab/GT-delivery/ATAC-seq/<atac_seq_analysis_name>/>
 
   Purpose:  fastqc has been run now we run trimmomatic to identified the trimmend and untrimmed fastq files
 
@@ -95,7 +95,7 @@
 
   make_atac_seq_shifted_bam_3_bwa.sh 
 
-  Call:     make_atac_seq_shifted_bam_1_run_fastqc.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working>
+  Call:     make_atac_seq_shifted_bam_3_bwa.sh
 
   Purpose:  bwa is the alignment of the trimmed fastq files to the genome
 
@@ -109,7 +109,7 @@
 
   make_atac_seq_shifted_bam_4_shift_sam.sh
 
-  Call:  make_atac_seq_shifted_bam_4_shift_sam.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working>
+  Call:  make_atac_seq_shifted_bam_4_shift_sam.sh
 
   Purpose: This routine calls ATAC_BAM_shifter_gappedAlign.pl
           
@@ -143,7 +143,7 @@
   HWI-ST374:226:C24HPACXX:4:2214:15928:96004      99      chrI    431     255     97M    =       474     144 
   HWI-ST374:226:C24HPACXX:4:2214:15928:96004      147     chrI    479     255     96M    =       431     -144 
 
-  Call:     make_atac_seq_shifted_bam_4_shift_sam.sh <ATAC-Seq Banchereau-Lab/GT-delivery/ATAC-seq directory (with trailing /> ]
+  Call:     make_atac_seq_shifted_bam_4_shift_sam.sh
 
   Assumptions:  
 
@@ -157,7 +157,7 @@
 
   make_atac_seq_shifted_bam_5_bamtobed.sh
 
-  Call:     make_atac_seq_shifted_bam_5_bamtobed.sh  </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working>
+  Call:     make_atac_seq_shifted_bam_5_bamtobed.sh
 
   Purpose: This routine sorts the shifted sam file and converts it to a bed file.
 
@@ -174,7 +174,7 @@
 
   make_atac_seq_shifted_bam_6_cleanup.sh
 
-  Call:  make_atac_seq_shifted_bam_6_cleanup.sh  </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working>
+  Call:  make_atac_seq_shifted_bam_6_cleanup.sh
 
   Purpose: This routine removes all the trim and trimU fastq files (intermediate files that may be reproduced)
            It also removes all sam files, and the unsorted bam file, also all .o and .e files for readibility.
