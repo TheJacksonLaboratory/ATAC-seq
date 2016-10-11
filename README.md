@@ -43,7 +43,20 @@
 
 
 
-#Begin - Make a directory in Banchereau-Lab ATAC-seq directory
+#Begin - Make a directory in Banchereau-Lab ATAC-seq directory and one in Banchereau-Lab GT-delivery/ATAC-seq
+
+  Once it is known that the files are ready from Genome Technologies (GT)
+  These files are copied to /data/Banchereau-Lab/GT-delivery/ATAC-seq maintaining
+  the project information encoded in the directory name
+  
+  Once copied, the user goes to the /data/Banchereau-Lab/ATAC-seq directory
+  makes an appropriately named subdirectory -- and begins the process
+  this may be facilitated by aligning all files in the project at once
+  once they are all delivered for example, and it may be over the entire course
+  of several months -- a single run may be performed and the job can be job arrayed
+  
+  To facilitate this -- symbolic links are made to a representatively named
+  directory structure and these may then be referenced in this first call
 
   Pick a name that is appropriate for the study for which this sequencing was done.  
   Make a directory with that name  /data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working
@@ -62,18 +75,7 @@
 
   make_atac_seq_shifted_bam_1_fastqc.sh
 
-  Purpose:  Once it is known that the files are ready from Genome Technologies (GT)
-            These files are copied to /data/Banchereau-Lab/GT-delivery/ATAC-seq maintaining
-            the project information encoded in the directory name
-    
-            Once copied, the user goes to the /data/Banchereau-Lab/ATAC-seq directory
-            makes an appropriately named subdirectory -- and begins the process
-            this may be facilitated by aligning all files in the project at once
-            once they are all delivered for example, and it may be over the entire course
-            of several months -- a single run may be performed and the job can be job arrayed
-            
-            To facilitate this -- symbolic links are made to a representatively named
-            directory structure and these may then be referenced in this first call
+  Purpose:  calls the fastqc to create quality control files for each of the fastq's
 
   What else happens -- a working directory is created
             
