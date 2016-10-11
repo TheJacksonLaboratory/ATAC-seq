@@ -29,6 +29,9 @@ scriptDIR=$(pwd)
 outputDIR=$scriptDIR/working
 
 ## Trimmomatic & Adapter Trimming Pipeline ###
+rm $outputDIR/trimmomatic_R1_filelist.txt
+rm $outputDIR/trimmomatic.qsub
+
 mkdir $outputDIR/trimmomatic
 find $dataDIR -name *R1_001.fastq.gz > $outputDIR/trimmomatic_R1_filelist.txt
 FILENUMBER=$(wc -l $outputDIR/trimmomatic_R1_filelist.txt | cut -d' ' -f1)
@@ -51,6 +54,7 @@ echo java -jar /opt/compsci/Trimmomatic/0.33/trimmomatic-0.33.jar PE -threads 2 
 echo python $scriptDIR/auyar/pyadapter_trim.py -a $outputDIR/trimmomatic/\$FILE1paired -b $outputDIR/trimmomatic/\$FILE2paired >> $outputDIR/trimmomatic.qsub
 
 ######
+echo about to call $outputDIR/trimmomatic.qsub
 qsub -V $outputDIR/trimmomatic.qsub
 
 echo "made the call to $outputDIR/trimmomatic.qsub -- wait until that job is complete before going to STEP 3"

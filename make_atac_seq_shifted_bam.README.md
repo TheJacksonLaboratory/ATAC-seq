@@ -21,10 +21,10 @@
      [ git clone the ATAC-seq repository ]
                  |
                  |
-     [ ./make_atac_seq_shifted_bam_1_fastqc.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working> ]
+     [ ./make_atac_seq_shifted_bam_1_fastqc.sh <ATAC-Seq Banchereau-Lab/GT-delivery/ATAC-seq directory (with trailing /> ]
                  |
                  |
-     [ ./make_atac_seq_shifted_bam_2_trimmomatic.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working> ]
+     [ ./make_atac_seq_shifted_bam_2_trimmomatic.sh <ATAC-Seq Banchereau-Lab/GT-delivery/ATAC-seq directory (with trailing /> ]
                  |
                  |
      [ ./make_atac_seq_shifted_bam_3_bwa.sh </data/Banchereau-Lab/ATAC-seq/<atac_seq_analysis_name>/working> ]
