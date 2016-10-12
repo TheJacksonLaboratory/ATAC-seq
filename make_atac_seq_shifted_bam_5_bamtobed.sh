@@ -41,7 +41,7 @@ outputDIR=$workingDIR/trimmomatic/bwa
 rm $workingDIR/shiftedbamfilelist.txt
 rm $workingDIR/postPost.qsub
 
-ls -1 $inputDIR/*shifted_sorted.bam > $workingDIR/shiftedbamfilelist.txt
+ls -1 $inputDIR/*shifted.bam > $workingDIR/shiftedbamfilelist.txt
 FILENUMBER=$(wc -l $workingDIR/shiftedbamfilelist.txt | cut -d' ' -f1)
 
 echo \#!/bin/bash > $workingDIR/postPostBWA.qsub
