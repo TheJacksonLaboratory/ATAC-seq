@@ -21,10 +21,10 @@
      [ git clone the ATAC-seq repository ]
                  |
                  |
-     [ ./make_atac_seq_shifted_bam_1_fastqc.sh <ATAC-Seq Banchereau-Lab/GT-delivery/ATAC-seq directory (with trailing /> ]
+     [ ./make_atac_seq_shifted_bam_1_fastqc.sh \</data/Banchereau-Lab/GT-delivery/ATAC-seq/\<atac_seq_analysis_name\>/ \>
                  |
                  |
-     [ ./make_atac_seq_shifted_bam_2_trimmomatic.sh <ATAC-Seq Banchereau-Lab/GT-delivery/ATAC-seq directory (with trailing /> ]
+     [ ./make_atac_seq_shifted_bam_2_trimmomatic.sh \</data/Banchereau-Lab/GT-delivery/ATAC-seq/\<atac_seq_analysis_name\>/ \>
                  |
                  |
      [ ./make_atac_seq_shifted_bam_3_bwa.sh ]
@@ -73,7 +73,7 @@
 
 #Call the first script - run fastqc
 
-  make_atac_seq_shifted_bam_1_fastqc.sh \</data/Banchereau-Lab/GT-delivery/ATAC-seq/<atac_seq_analysis_name\>/
+  make_atac_seq_shifted_bam_1_fastqc.sh \</data/Banchereau-Lab/GT-delivery/ATAC-seq/\<atac_seq_analysis_name\>/ \>
 
   Purpose:  calls the fastqc to create quality control files for each of the fastq's
 
@@ -83,7 +83,7 @@
   
   make_atac_seq_shifted_bam_2_trimmomatic.sh
 
-  Call:     make_atac_seq_shifted_bam_1_trimmomatic.sh \</data/Banchereau-Lab/GT-delivery/ATAC-seq/<atac_seq_analysis_name\>/
+  Call:     make_atac_seq_shifted_bam_1_trimmomatic.sh \</data/Banchereau-Lab/GT-delivery/ATAC-seq/\<atac_seq_analysis_name\>/ \>
 
   Purpose:  fastqc has been run now we run trimmomatic to identified the trimmend and untrimmed fastq files
 
