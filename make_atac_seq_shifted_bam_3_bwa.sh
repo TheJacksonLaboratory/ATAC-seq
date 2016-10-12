@@ -36,7 +36,7 @@ rm $workingDIR/filelist.txt
 ls -1 $trimmomaticDIR/*R1_001.trim.fastq.gz > $workingDIR/filelist.txt
 FILENUMBER=$(wc -l $workingDIR/filelist.txt | cut -d' ' -f1)
 
-#echo $FILENUMBER
+echo $FILENUMBER
 rm $workingDIR/bwa.qsub
 
 echo \#!/bin/bash >> $workingDIR/bwa.qsub
@@ -52,7 +52,7 @@ echo module load bedtools >> $workingDIR/bwa.qsub
 echo FILE=\$\(head -n \$PBS_ARRAYID $workingDIR/filelist.txt \| tail -1\) >> $workingDIR/bwa.qsub
 echo FILE2=\$\(basename "\${FILE}"\| sed \'s/R1_001\.trim\.fastq\.gz/R2_001\.trim\.fastq\.gz/g\'\) >> $workingDIR/bwa.qsub
 echo FILESAM=\$\(basename "\${FILE}"\).hg19.sam >> $workingDIR/bwa.qsub
-echo /opt/compsci/bwa/0.7.12/bin/bwa mem -M /data/shared/genomes/Homo_sapiens/UCSC/hg19/Sequence/BWAIndex/genome.fa \$FILE $workingDIR/\$FILE2 \> $workingDIR/bwa/\$FILESAM >> $workingDIR/bwa.qsub
+echo /opt/compsci/bwa/0.7.12/bin/bwa mem -M /data/shared/genomes/Homo_sapiens/UCSC/hg19/Sequence/BWAIndex/genome.fa \$FILE $trimmomaticDIR/\$FILE2 \> $trimmomaticDIR/bwa/\$FILESAM >> $workingDIR/bwa.qsub
 
 ######
 qsub -V $workingDIR/bwa.qsub
