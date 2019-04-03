@@ -8,8 +8,8 @@ cd $PBS_O_WORKDIR
 
 module load python
 module load R 
-module load perl/5.10.1
-module load samtools/0.1.19
+module load perl/5.16.3
+module load samtools/1.2
 module load bedtools
 
 #gunzip ../*
