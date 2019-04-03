@@ -72,8 +72,8 @@ mkdir $outputDIR/trimmomatic/bwa/homer
 #echo \#PBS -N ATAC-seq  >> $outputDIR/ATAC-seq.qsub
 #echo module load python >> $outputDIR/ATAC-seq.qsub
 #echo module load R >> $outputDIR/ATAC-seq.qsub
-#echo module load perl/5.10.1 >> $outputDIR/ATAC-seq.qsub
-#echo module load samtools/0.1.19 >> $outputDIR/ATAC-seq.qsub
+#echo module load perl/5.16.3 >> $outputDIR/ATAC-seq.qsub
+#echo module load samtools/1.2 >> $outputDIR/ATAC-seq.qsub
 #echo module load bedtools >> $outputDIR/ATAC-seq.qsub
 #echo gunzip $outputDIR/trimmomatic/*.gz >> $outputDIR/ATAC-seq.qsub
 #echo bash $scriptDIR/auyar/bwa_trimmomatic.sh ../ >> $outputDIR/ATAC-seq.qsub
@@ -111,8 +111,8 @@ JOBHOLD="$(qsub $outputDIR/trimmomatic.qsub)"
 #echo \#PBS -t 1-$FILENUMBER >> $outputDIR/bwa.qsub
 #echo module load python >> $outputDIR/bwa.qsub
 #echo module load R >> $outputDIR/bwa.qsub
-#echo module load perl/5.10.1 >> $outputDIR/bwa.qsub
-#echo module load samtools/0.1.19 >> $outputDIR/bwa.qsub
+#echo module load perl/5.16.3 >> $outputDIR/bwa.qsub
+#echo module load samtools/1.2 >> $outputDIR/bwa.qsub
 #echo module load bedtools >> $outputDIR/bwa.qsub
 #echo FILE=\$\(head -n \$PBS_ARRAYID $outputDIR/bwa_filelist.txt \| tail -1\) >> $outputDIR/bwa.qsub
 #echo FILE2=\$\(basename "\${FILE}"\| sed \'s/R1_001\.trim\.fastq\.gz/R2_001\.trim\.fastq\.gz/g\'\) >> $outputDIR/bwa.qsub

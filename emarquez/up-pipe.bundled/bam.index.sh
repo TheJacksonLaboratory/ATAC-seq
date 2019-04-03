@@ -7,7 +7,7 @@
 #PBS -e /home/emarquez/scripts/fperrfile.txt
 #PBS -o /dev/null
 
-module load samtools/0.1.19
+module load samtools/1.2
 
 # This scripts created BAI files for merged BAM files and saves them in the same directory
 

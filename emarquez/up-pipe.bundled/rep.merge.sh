@@ -9,7 +9,7 @@
 
 cd $PBS_O_WORKDIR
 
-module load samtools/0.1.19
+module load samtools/1.2
 
 # This scripts simply finds technical replicates for a sample in helix, whose specific locations will vary, merge them and save them in the dedicated directory _bamfiles_ in my data space
 

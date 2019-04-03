@@ -21,8 +21,8 @@ echo \#PBS -N bwa  >> $dataDIR/postBWA.qsub
 echo \#PBS -t 1-$FILENUMBER >> $dataDIR/postBWA.qsub
 echo module load python >> $dataDIR/postBWA.qsub
 echo module load R >> $dataDIR/postBWA.qsub
-echo module load perl/5.10.1 >> $dataDIR/postBWA.qsub
-echo module load samtools/0.1.19 >> $dataDIR/postBWA.qsub
+echo module load perl/5.16.3 >> $dataDIR/postBWA.qsub
+echo module load samtools/1.2 >> $dataDIR/postBWA.qsub
 echo module load bedtools >> $dataDIR/postBWA.qsub
 echo FILESAM=\$\(head -n \$PBS_ARRAYID $dataDIR/samfilelist.txt \| tail -1\) >> $dataDIR/postBWA.qsub
 echo FILESORTED=\$\(basename "\${FILESAM}" \| sed \'s/\.sam/_sorted\.sam/g\'\) >> $dataDIR/postBWA.qsub

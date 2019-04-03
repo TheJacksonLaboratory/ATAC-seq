@@ -51,8 +51,8 @@ echo \#PBS -N bamtobed  >> $workingDIR/postPostBWA.qsub
 echo \#PBS -t 1-$FILENUMBER >> $workingDIR/postPostBWA.qsub
 echo module load python >> $workingDIR/postPostBWA.qsub
 echo module load R >> $workingDIR/postPostBWA.qsub
-echo module load perl/5.10.1 >> $workingDIR/postPostBWA.qsub
-echo module load samtools/0.1.19 >> $workingDIR/postPostBWA.qsub
+echo module load perl/5.16.3 >> $workingDIR/postPostBWA.qsub
+echo module load samtools/1.2 >> $workingDIR/postPostBWA.qsub
 echo module load bedtools >> $workingDIR/postPostBWA.qsub
 echo FILE=\$\(head -n \$PBS_ARRAYID $workingDIR/shiftedbamfilelist.txt \| tail -1\) >> $workingDIR/postPostBWA.qsub
 echo FILENAME=\$\(basename \"\${FILE}\" \| sed \'s/\.bam/_sorted.bam/g\'\)  >> $workingDIR/postPostBWA.qsub

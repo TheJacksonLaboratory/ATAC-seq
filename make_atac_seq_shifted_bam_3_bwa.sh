@@ -46,8 +46,8 @@ echo \#PBS -N bwa  >> $workingDIR/bwa.qsub
 echo \#PBS -t 1-$FILENUMBER%100 >> $workingDIR/bwa.qsub
 echo module load python >> $workingDIR/bwa.qsub
 echo module load R >> $workingDIR/bwa.qsub
-echo module load perl/5.10.1 >> $workingDIR/bwa.qsub
-echo module load samtools/0.1.19 >> $workingDIR/bwa.qsub
+echo module load perl/5.16.3 >> $workingDIR/bwa.qsub
+echo module load samtools/1.2 >> $workingDIR/bwa.qsub
 echo module load bedtools >> $workingDIR/bwa.qsub
 echo FILE=\$\(head -n \$PBS_ARRAYID $workingDIR/filelist.txt \| tail -1\) >> $workingDIR/bwa.qsub
 echo FILE2=\$\(basename "\${FILE}"\| sed \'s/R1_001\.trim\.fastq\.gz/R2_001\.trim\.fastq\.gz/g\'\) >> $workingDIR/bwa.qsub

@@ -80,8 +80,8 @@ echo \#PBS -N shift_sam  >> $workingDIR/postBWA.qsub
 echo \#PBS -t 1-$FILENUMBER >> $workingDIR/postBWA.qsub
 echo module load python >> $workingDIR/postBWA.qsub
 echo module load R >> $workingDIR/postBWA.qsub
-echo module load perl/5.10.1 >> $workingDIR/postBWA.qsub
-echo module load samtools/0.1.19 >> $workingDIR/postBWA.qsub
+echo module load perl/5.16.3 >> $workingDIR/postBWA.qsub
+echo module load samtools/1.2 >> $workingDIR/postBWA.qsub
 echo module load bedtools >> $workingDIR/postBWA.qsub
 echo FILESAM=\$\(head -n \$PBS_ARRAYID $workingDIR/samfilelist.txt \| tail -1\) >> $workingDIR/postBWA.qsub
 echo FILESORTED=\$\(basename "\${FILESAM}" \| sed \'s/\.sam/_sorted\.sam/g\'\) >> $workingDIR/postBWA.qsub

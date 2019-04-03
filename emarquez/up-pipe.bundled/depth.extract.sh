@@ -7,7 +7,7 @@
 #PBS -e /home/emarquez/scripts/fperrfile.txt
 #PBS -o /dev/null
 
-module load samtools/0.1.19
+module load samtools/1.2
 
 # Compiles depth of all samples into a single file
 
